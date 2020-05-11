@@ -244,6 +244,10 @@ body {
     text-align: left;
 }
 
+.gallery {
+    margin-bottom: 120px;
+}
+
 .gallery-text {
     background-image: url(../../assets/images/main_03.jpg);
     background-position: center;
