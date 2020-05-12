@@ -276,4 +276,38 @@ body {
     word-break: break-all;
 }
 
+.card {
+    max-width: 1280px;
+    padding: 0;
+    margin: auto;
+}
 
+.card-wrap {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.card-list {
+    width: calc((100% / 3) - 16px);
+    padding-right: 16px;
+    margin-bottom: 60px;
+}
+
+.card-img img {
+    width: 100%;
+    height: 600px;
+    padding: 4px;
+    object-fit: cover;
+    display: block;
+}
+
+.card-title {
+    font-size: 1.1rem;
+    margin-bottom: 16px;
+}
+
+.card-img {
+    border: 2px solid;
+    margin-bottom: 16px;
+}
