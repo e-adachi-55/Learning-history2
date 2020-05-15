@@ -43,78 +43,88 @@ table {
     box-sizing: border-box;
 }
 /* -----ここから下に記述してください----- */
-html {
-    font-size: 20px;
-}
-
-body {
-    font-family: europa, "Yu Gothic", YuGothic, "ヒラギノ角ゴ ProN W3", "Hiragino Kaku Gothic ProN", メイリオ, Meiryo, sans-serif;
-}
-
 .header {
-    height: 100px;
-    width: 100%;
     position: fixed;
-    top: 0;
+    width: 100%;
     left: 0;
+    top: 0;
     z-index: 1000;
     background-color: rgb(000,000,000,.5);
-    padding: 30px;
-    color: #FFF;
 }
-
-.header-nav {
+.header__bg {
+    position: relative;
+    z-index: 2;
+    padding: 30px;
+}
+.header__logo a {
+    font-family: cursive;
+    display: block;
+    text-decoration: none;
+    font-size: 1.5rem;
+    color: #fff;
+}
+.header__cat {
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
 }
-
-.header-nav input, .header-nav label {
+.header__cat input,
+.header__cat label {
     display: none;
 }
-
-.header-logo {
-    font-size: 1.5rem;
-    font-family: cursive;
-}
-
-.header-logo a {
-    text-decoration: none;
-    color: #FFF;
-}
-
-.header-nav ul {
+.header__navi__list {
     display: flex;
 }
-
-.header-nav li {
-    margin-left: 20px;
+.header__navi__item span {
+    position: relative;
 }
-
-.header-nav ul li a {
+.header__navi__item span:after {
+    content: "";
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    width: 0;
+    height: 1px;
+    background: #fff;
+    opacity: 0;
+    transition: all .8s cubic-bezier(.19,1,.22,1);
+    transition-timing-function: cubic-bezier(.19,1,.22,1);
+}
+.header__navi__item:hover span:after {
+    opacity: 1;
+    left: 0;
+    width: 100%;
+}
+.header__navi a {
     text-decoration: none;
-    color: #FFF;
+    padding-left: 20px;
+    padding-right: 20px;
+    font-size: 1rem;
+    color: #fff;
 }
 
-.header-visual {
+.mainKv {
+    position: relative;
     background-image: url(../../assets/images/kv.jpg);
     background-position: center right;
     background-repeat: no-repeat;
     width: 100%;
     height: 80vh;
-    position: relative;
+    min-height: 660px;
 }
-
-.header-visual-title {
+.mainKv__title {
     position: absolute;
     top: 50%;
     left: 50%;
-    color: #FFF;
-    transform: translate(-50%,-50%);
+    transform: translate(-50%, -50%);
+}
+.mainKv__title {
     font-family: fantasy;
     font-size: 3rem;
-    text-shadow: 10px 10px 5px #000;
     font-weight: bold;
+    color: #fff;
+    text-shadow: 10px 10px 5px #000;
 }
 
 .concept {
@@ -382,26 +392,135 @@ body {
     padding: 16px;
 }
 
-@media screen and (max-width:786px) {
+/* レスポンシブ */
+@media screen and (max-width: 768px) {
     html {
         font-size: 16px;
     }
-
-    /* ヘッダー　*/
-    .header {
+    /* ヘッダー */
+    .header__bg {
         padding: 10px;
     }
-
-    .header-logo a {
+    .header__logo a {
         font-size: 1.2rem;
     }
-
-    /*ヘッダーハンバーガーメニュー*/
-    .header-nav input, .header-nav label {
+    /* ヘッダーハンバーガーメニュー */
+    .header__cat input,
+    .header__cat label {
         display: block;
     }
-
-    .header-nav input {
+    .header__cat input {
         display: none;
     }
-}
+    .header__cat label {
+        position: absolute;
+        right: 10px;
+        clear: both;
+    }
+    span.hamburger__icon {
+        display: inline-block;
+        width: 35px;
+        height: 25px;
+    }
+    span.hamburger__icon i {
+        position: absolute;
+        width: 100%;
+        height: 2px;
+        background-color: #fff;
+        display: block;
+        transition: all .3s ease-in-out;
+    }
+    span.hamburger__icon i:nth-child(1) {
+        top: 0;
+    }
+    span.hamburger__icon i:nth-child(2) {
+        margin: auto;
+        top: 0;
+        bottom: 0;
+    }
+    span.hamburger__icon i:nth-child(3) {
+        bottom: 0;
+    }
+    .header__cat input:checked + label span.hamburger__icon i:nth-child(1) {
+        margin: auto;
+        transform: rotate(45deg);
+        right: 0;
+        bottom: 0;
+        left: 0;
+        top: 0;
+    }
+    .header__cat input:checked + label span.hamburger__icon i:nth-child(2) {
+        transform: rotateX(90deg);
+        top: 0;
+        bottom: 0;
+    }
+    .header__cat input:checked + label span.hamburger__icon i:nth-child(3) {
+        margin: auto;
+        transform: rotate(-45deg);
+        top: 0;
+        right: 0;
+        bottom: 0;
+    }
+    .header__cat input:checked ~ .header__navi {
+        z-index: 99;
+        opacity: 1;
+        transform: translateX(0);
+    }
+    .header__navi {
+        position: fixed;
+        opacity: 0;
+        background-color: rgba(255, 255, 255, 0.7);
+        top: 50px;
+        right: 0;
+        transform: translateX(100%);
+        bottom: 0;
+        left: 0;
+        z-index: -1;
+        transition: all 1s ease-out;
+    }
+    .header__navi__wrap {
+        width: 100%;
+        background-color: #fff;
+        position: absolute;
+        right: 0;
+        top: 0px;
+        bottom: 0;
+        transition-duration: 1s;
+        transition-property: right;
+        overflow-y: scroll;
+    }
+    .header__cat input:checked ~ .header__navi .header__navi__wrap {
+        right: 0;
+    }
+    .header__navi__list {
+        margin: 0;
+        display: block;
+        justify-content: inherit;
+    }
+    .header__navi__item {
+        border-bottom: 1px solid #000;
+    }
+    .header__navi__item a {
+        padding: 0 50px;
+        color: #000;
+        font-size: 24px;
+        height: 100px;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: center;
+        font-weight: 700;
+        line-height: 1;
+        transition: background-color .3s ease-in-out;
+    }
+    .mainKv__wrap {
+        height: 100vh;
+        background-position: center right -200px;
+    }
+    .mainKv__title {
+        width: 100%;
+        text-align: center;
+    }
+    .mainKv__title h1 {
+        font-size: 2.6rem;
+    }
