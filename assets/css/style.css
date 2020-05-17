@@ -131,7 +131,7 @@ table {
     margin-bottom: 120px;
 }
 
-.concept-inner{
+.concept-inner {
     max-width: 1080px;
     padding: 120px 0 0;
     margin:auto;
@@ -523,4 +523,67 @@ table {
     }
     .mainKv__title h1 {
         font-size: 2.6rem;
+    }
+
+    /* コンセプト */
+    .concept {
+        margin-bottom: 60px;
+    }
+
+    .concept-inner {
+        padding: 60px 24px 0;
+    }
+
+    .concept-container {
+        display: block;
+    }
+
+    .cocept-img {
+        width: 100%;
+        margin-bottom: 30px;
+    }
+
+    .concept-text {
+        width: 100%;
+        height: 400px;
+    }
+
+    .application {
+        margin-bottom: 60px;
+    }
+
+    .application-inner {
+        display: block;
+    }
+
+    .application-img {
+        width: 100%;
+    }
+
+    .application-img-bg {
+        height: 500px;
+    }
+
+    .application-area {
+        width: 100%;
+    }
+
+    .application-text {
+        padding: 30px 24px;
+        background-color: #f4f4f4;
+    }
+
+    .application-text .text-title {
+        text-align: center;
+    }
+
+    .gallery {
+        margin-bottom: 60px;
+        padding-top: 100px;
+    }
+
+    .gallery-container {
+        width: auto;
+        padding: 30px;
+        height: calc(100% - 60px);
     }
